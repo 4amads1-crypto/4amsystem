@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Authentication</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            direction: rtl;
+        }
+        .info {
+            background: #f0f0f0;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .error {
+            background: #ffebee;
+            color: #c62828;
+        }
+        .success {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>اختبار المصادقة</h1>
+    
+    <div class="info">
+        <h3>معلومات الجلسة:</h3>
+        <p><strong>Token:</strong> <span id="tokenInfo"></span></p>
+        <p><strong>Current User:</strong> <span id="userInfo"></span></p>
+    </div>
+    
+    <div>
+        <button onclick="testLogin()">تسجيل دخول تجريبي</button>
+        <button onclick="testGetTickets()">جلب التذاكر</button>
+        <button onclick="clearSession()">مسح الجلسة</button>
+    </div>
+    
+    <div id="result"></div>
+    
+    <script src="js/api.js"></script>
+    <script>
+        function updateInfo() {
+            const token = sessionStorage.getItem('token');
+            const user = sessionStorage.getItem('currentUser');
+            
+            document.getElementById('tokenInfo').textContent = token ? 'موجود ✓' : 'غير موجود ✗';
+            document.getElementById('userInfo').textContent = user ? JSON.parse(user).name : 'غير موجود ✗';
+        }
+        
+        async function testLogin() {
+            const result = document.getElementById('result');
+            result.innerHTML = '<div class="info">جاري تسجيل الدخول...</div>';
+            
+            try {
+                const user = await AuthAPI.login('mostafa.nassar@4am-system.com', 'Admin@123');
+                sessionStorage.setItem('currentUser', JSON.stringify(user));
+                result.innerHTML = '<div class="info success">تم تسجيل الدخول بنجاح!</div>';
+                updateInfo();
+            } catch (error) {
+                result.innerHTML = `<div class="info error">خطأ: ${error.message}</div>`;
+            }
+        }
+        
+        async function testGetTickets() {
+            const result = document.getElementById('result');
+            result.innerHTML = '<div class="info">جاري جلب التذاكر...</div>';
+            
+            try {
+                const tickets = await TicketsAPI.getAll();
+                result.innerHTML = `<div class="info success">تم جلب ${tickets.length} تذكرة بنجاح!</div>`;
+                console.log('Tickets:', tickets);
+            } catch (error) {
+                result.innerHTML = `<div class="info error">خطأ: ${error.message}</div>`;
+                console.error('Error:', error);
+            }
+        }
+        
+        function clearSession() {
+            sessionStorage.clear();
+            updateInfo();
+            document.getElementById('result').innerHTML = '<div class="info">تم مسح الجلسة</div>';
+        }
+        
+        updateInfo();
+    </script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+/* Dark Mode Styles */
+body.dark-mode {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+/* Login Page Dark Mode */
+.dark-mode .login-box {
+    background: #1e1e2e;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.dark-mode .logo h1 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dark-mode .logo p {
+    color: #b0b0b0;
+}
+
+.dark-mode .form-group label {
+    color: #e0e0e0;
+}
+
+.dark-mode .form-group input,
+.dark-mode .form-group select,
+.dark-mode .form-group textarea {
+    background: #2a2a3e;
+    border-color: #3a3a4e;
+    color: #e0e0e0;
+}
+
+.dark-mode .form-group input:focus,
+.dark-mode .form-group select:focus,
+.dark-mode .form-group textarea:focus {
+    background: #2a2a3e;
+    border-color: #667eea;
+}
+
+.dark-mode .error-msg {
+    background: #3d1f1f;
+    color: #ff6b6b;
+}
+
+.dark-mode .success-msg {
+    background: #1f3d2f;
+    color: #51cf66;
+}
+
+/* Dashboard Dark Mode */
+.dark-mode.dashboard {
+    background: #0f0f1e;
+}
+
+.dark-mode .sidebar {
+    background: #1e1e2e;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+}
+
+.dark-mode .nav-item {
+    color: #b0b0b0;
+}
+
+.dark-mode .nav-item:hover {
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.2) 0%, transparent 100%);
+    color: #667eea;
+}
+
+.dark-mode .nav-item.active {
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.25) 0%, transparent 100%);
+    color: #667eea;
+}
+
+.dark-mode .header {
+    background: #1e1e2e;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+}
+
+.dark-mode .header h1 {
+    color: #e0e0e0;
+}
+
+.dark-mode .user-info {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+}
+
+.dark-mode .user-info span:first-child {
+    color: #e0e0e0;
+}
+
+.dark-mode .content {
+    background: #0f0f1e;
+}
+
+/* Cards Dark Mode */
+.dark-mode .stat-card {
+    background: #1e1e2e;
+    border-color: #2a2a3e;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.dark-mode .stat-card h3 {
+    color: #b0b0b0;
+}
+
+/* Tables Dark Mode */
+.dark-mode .table-container {
+    background: #1e1e2e;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.dark-mode .table-container h2 {
+    color: #e0e0e0;
+}
+
+.dark-mode table th {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+    color: #e0e0e0;
+    border-bottom-color: #667eea;
+}
+
+.dark-mode table td {
+    border-bottom-color: #2a2a3e;
+    color: #b0b0b0;
+}
+
+.dark-mode table tr:hover {
+    background: #252535;
+}
+
+/* Modal Dark Mode */
+.dark-mode .modal {
+    background: rgba(0,0,0,0.8);
+}
+
+.dark-mode .modal-content {
+    background: #1e1e2e;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.dark-mode .modal-header {
+    border-bottom-color: #2a2a3e;
+}
+
+.dark-mode .modal-header h2 {
+    color: #e0e0e0;
+}
+
+.dark-mode .modal-footer {
+    border-top-color: #2a2a3e;
+}
+
+/* Ticket Items Dark Mode */
+.dark-mode .ticket-item {
+    background: #1e1e2e;
+    border-color: #2a2a3e;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.dark-mode .ticket-header {
+    border-bottom-color: #2a2a3e;
+}
+
+.dark-mode .ticket-body {
+    color: #b0b0b0;
+}
+
+/* Comments Dark Mode */
+.dark-mode .comments {
+    border-top-color: #2a2a3e;
+}
+
+.dark-mode .comments h3 {
+    color: #e0e0e0;
+}
+
+.dark-mode .comment {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-right-color: #667eea;
+}
+
+/* Buttons Dark Mode */
+.dark-mode .btn-secondary {
+    background: #3a3a4e;
+    color: #e0e0e0;
+}
+
+.dark-mode .btn-secondary:hover {
+    background: #4a4a5e;
+}
+
+/* Scrollbar Dark Mode */
+.dark-mode ::-webkit-scrollbar-track {
+    background: #1e1e2e;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.dark-mode-toggle:active {
+    transform: scale(0.95);
+}
+
+/* Admin Panel Dark Mode */
+.dark-mode .container {
+    background: #1e1e2e;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.dark-mode .info-box {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+    border-right-color: #667eea;
+    color: #e0e0e0;
+}
+
+/* Placeholders Dark Mode */
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder,
+.dark-mode select::placeholder {
+    color: #6a6a7a;
+}
+
+/* Links Dark Mode */
+.dark-mode a {
+    color: #8b9aff;
+}
+
+.dark-mode a:hover {
+    color: #a5b4ff;
+}
+
+/* Status Update Buttons Dark Mode */
+.dark-mode .ticket-item > div[style*="background: #f8f9fa"] {
+    background: #252535 !important;
+}

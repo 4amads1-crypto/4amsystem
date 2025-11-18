@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة الإدارة - عرض المستخدمين</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <style>
+        body {
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideUp 0.5s ease;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+        .info-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-right: 4px solid #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 لوحة الإدارة - المستخدمين</h1>
+        
+        <div class="info-box">
+            <strong>💡 ملاحظة:</strong> هذه الصفحة لعرض معلومات المستخدمين وإعادة تعيين كلمات المرور. 
+            كلمات المرور مشفرة ولا يمكن عرضها.
+        </div>
+        
+        <div style="display: flex; gap: 15px; margin-bottom: 25px;">
+            <button class="btn btn-primary" onclick="loadUsers()">🔄 تحديث القائمة</button>
+            <button class="btn btn-secondary" onclick="window.location.href='index.html'">← العودة لتسجيل الدخول</button>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>الاسم</th>
+                    <th>البريد الإلكتروني</th>
+                    <th>الدور</th>
+                    <th>القسم</th>
+                    <th>إجراءات</th>
+                </tr>
+            </thead>
+            <tbody id="usersTable">
+                <tr>
+                    <td colspan="6" style="text-align: center;">جاري التحميل...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <script>
+        async function loadUsers() {
+            try {
+                const response = await fetch('http://localhost:3000/api/admin/users');
+                const users = await response.json();
+                
+                const tbody = document.getElementById('usersTable');
+                tbody.innerHTML = '';
+                
+                users.forEach(user => {
+                    const roleText = user.role === 'admin' ? 'مدير' : 
+                                    user.role === 'assistant' ? 'مساعد' : 'موظف';
+                    const badgeClass = user.role === 'admin' ? 'badge-admin' : 
+                                      user.role === 'assistant' ? 'badge-assistant' : 'badge-employee';
+                    
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${user.id}</td>
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                        <td><span class="badge ${badgeClass}">${roleText}</span></td>
+                        <td>${user.department || '-'}</td>
+                        <td>
+                            <button class="btn btn-primary btn-small" onclick="resetPassword(${user.id}, '${user.email}')">
+                                🔑 إعادة تعيين كلمة المرور
+                            </button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (error) {
+                console.error('Error:', error);
+                alert('حدث خطأ: ' + error.message);
+            }
+        }
+        
+        async function resetPassword(userId, email) {
+            const newPassword = prompt(`إعادة تعيين كلمة المرور لـ ${email}\n\nأدخل كلمة المرور الجديدة:`);
+            
+            if (!newPassword) return;
+            
+            if (newPassword.length < 6) {
+                alert('كلمة المرور يجب أن تكون 6 أحرف على الأقل');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`http://localhost:3000/api/admin/reset-password/${userId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ newPassword })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    alert(`تم إعادة تعيين كلمة المرور بنجاح!\n\nالبريد: ${email}\nكلمة المرور: ${newPassword}`);
+                } else {
+                    alert('حدث خطأ: ' + data.error);
+                }
+            } catch (error) {
+                alert('حدث خطأ: ' + error.message);
+            }
+        }
+        
+        // Load users on page load
+        loadUsers();
+    </script>
+    <script src="js/dark-mode.js"></script>
+</body>
+</html>

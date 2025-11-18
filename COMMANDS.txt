@@ -1,0 +1,44 @@
+# 🚀 أوامر رفع النظام على GitHub
+
+## الخطوة 1: تهيئة Git
+git init
+
+## الخطوة 2: إضافة جميع الملفات
+git add .
+
+## الخطوة 3: عمل Commit
+git commit -m "4AM System - First Deploy"
+
+## الخطوة 4: تغيير اسم الـ branch
+git branch -M main
+
+## الخطوة 5: ربط بـ GitHub (غير YOUR_USERNAME باسمك)
+git remote add origin https://github.com/YOUR_USERNAME/4am-system.git
+
+## الخطوة 6: رفع الكود
+git push -u origin main
+
+---
+
+# ملاحظات مهمة:
+
+1. قبل الخطوة 5، يجب إنشاء repository على GitHub:
+   - اذهب إلى: https://github.com/new
+   - اسم الـ repo: 4am-system
+   - اجعله Public
+   - اضغط Create repository
+
+2. في الخطوة 5، استبدل YOUR_USERNAME باسم حسابك على GitHub
+
+3. إذا طلب منك تسجيل الدخول:
+   - أدخل username و password
+   - أو استخدم Personal Access Token
+
+---
+
+# إذا كان Git غير مثبت:
+
+## تحميل Git:
+https://git-scm.com/download/win
+
+## بعد التثبيت، أعد فتح Terminal وابدأ من الخطوة 1

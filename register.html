@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4AM System Company - إنشاء حساب</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+</head>
+<body class="login-page">
+    <div class="login-container" style="max-width: 550px;">
+        <div class="login-box">
+            <div class="logo">
+                <h1>4AM System</h1>
+                <p>إنشاء حساب جديد</p>
+            </div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="name">👤 الاسم الكامل</label>
+                    <input type="text" id="name" placeholder="أدخل اسمك الكامل" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">📧 البريد الإلكتروني</label>
+                    <input type="email" id="email" placeholder="example@4am-system.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">🔒 كلمة المرور</label>
+                    <input type="password" id="password" placeholder="6 أحرف على الأقل" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">🔒 تأكيد كلمة المرور</label>
+                    <input type="password" id="confirmPassword" placeholder="أعد إدخال كلمة المرور" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="role">💼 الدور الوظيفي</label>
+                    <select id="role" required>
+                        <option value="">اختر الدور الوظيفي</option>
+                        <option value="assistant">مساعد</option>
+                        <option value="employee">موظف</option>
+                    </select>
+                </div>
+                <div class="form-group" id="departmentGroup" style="display: none;">
+                    <label for="department">🏢 القسم</label>
+                    <select id="department">
+                        <option value="">اختر القسم</option>
+                        <option value="Account Manager">Account Manager</option>
+                        <option value="Monitor">Monitor</option>
+                        <option value="Moderator">Moderator</option>
+                        <option value="Media Buyer">Media Buyer</option>
+                        <option value="Graphic Designer">Graphic Designer</option>
+                        <option value="Reel Creator">Reel Creator</option>
+                        <option value="Content Creator">Content Creator</option>
+                        <option value="Photographer">Photographer</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">إنشاء الحساب ✨</button>
+                <div id="errorMsg" class="error-msg"></div>
+                <div id="successMsg" class="success-msg"></div>
+                <div style="text-align: center; margin-top: 25px;">
+                    <a href="index.html" style="color: #667eea; text-decoration: none; font-weight: 600; font-size: 14px;">
+                        لديك حساب بالفعل؟ تسجيل الدخول ←
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="js/dark-mode.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/register.js"></script>
+</body>
+</html>
