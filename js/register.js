@@ -66,7 +66,12 @@ document.getElementById('registerForm').addEventListener('submit', async functio
             department: role === 'employee' ? department : null
         };
         
-        const response = await fetch('http://localhost:3000/api/register', {
+        // Use relative URL to work on any domain
+        const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'http://localhost:3000/api/register'
+            : '/api/register';
+        
+        const response = await fetch(apiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
