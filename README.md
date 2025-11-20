@@ -84,8 +84,6 @@ http://localhost:3000/admin-panel.html
 - Reel Creator
 - Content Creator
 - Photographer
-- mahmoud
-
 ## نظام حالات التذاكر
 
 يتضمن النظام 3 حالات للتذاكر:
